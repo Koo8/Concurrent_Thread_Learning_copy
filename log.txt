@@ -1,0 +1,38 @@
+Status of thread 0 is NEW
+Status of thread 1 is NEW
+Status of thread 2 is NEW
+Status of thread 3 is NEW
+Status of thread 4 is NEW
+Status of thread 5 is NEW
+Status of thread 6 is NEW
+Status of thread 7 is NEW
+Status of thread 8 is NEW
+Status of thread 9 is NEW
+Thread Thread-0 with id 13 old state is NEW, new state is RUNNABLE
+Thread Thread-1 with id 14 old state is NEW, new state is RUNNABLE
+Thread Thread-2 with id 15 old state is NEW, new state is RUNNABLE
+Thread Thread-3 with id 16 old state is NEW, new state is RUNNABLE
+Thread Thread-4 with id 17 old state is NEW, new state is RUNNABLE
+Thread Thread-5 with id 18 old state is NEW, new state is RUNNABLE
+Thread Thread-6 with id 19 old state is NEW, new state is RUNNABLE
+Thread Thread-7 with id 20 old state is NEW, new state is RUNNABLE
+Thread Thread-8 with id 21 old state is NEW, new state is RUNNABLE
+Thread Thread-9 with id 22 old state is NEW, new state is RUNNABLE
+Thread Thread-0 with id 13 old state is RUNNABLE, new state is TERMINATED
+Thread Thread-8 with id 21 old state is RUNNABLE, new state is BLOCKED
+Thread Thread-9 with id 22 old state is RUNNABLE, new state is BLOCKED
+Thread Thread-2 with id 15 old state is RUNNABLE, new state is TERMINATED
+Thread Thread-4 with id 17 old state is RUNNABLE, new state is BLOCKED
+Thread Thread-6 with id 19 old state is RUNNABLE, new state is BLOCKED
+Thread Thread-5 with id 18 old state is RUNNABLE, new state is BLOCKED
+Thread Thread-9 with id 22 old state is BLOCKED, new state is RUNNABLE
+Thread Thread-5 with id 18 old state is BLOCKED, new state is RUNNABLE
+Thread Thread-6 with id 19 old state is BLOCKED, new state is RUNNABLE
+Thread Thread-8 with id 21 old state is BLOCKED, new state is RUNNABLE
+Thread Thread-4 with id 17 old state is BLOCKED, new state is TERMINATED
+Thread Thread-8 with id 21 old state is RUNNABLE, new state is TERMINATED
+Thread Thread-3 with id 16 old state is RUNNABLE, new state is TERMINATED
+Thread Thread-7 with id 20 old state is RUNNABLE, new state is TERMINATED
+Thread Thread-1 with id 14 old state is RUNNABLE, new state is TERMINATED
+Thread Thread-9 with id 22 old state is RUNNABLE, new state is TERMINATED
+Thread Thread-5 with id 18 old state is RUNNABLE, new state is TERMINATED
