@@ -52,7 +52,7 @@ public class Buffer {
             // since the switch of "okToProducer" is determined by producer thread,
             // if stringstorage.size == 0 the consumer can't poll from the buffer
             // if producer turn the switch of "okToProducer" off, the consumer don't need to wait forever.
-            if (/*hasPendingLines()*/okToProducer || stringStorage.size()>0) {
+            if (/*hasPendingLines() *//*okToProducer ||*/ stringStorage.size()>0) { // NOTE: "the okToProducer switch is not need for reading by consumer here, it is the switch for stop the consumers to wait
                 stringRetrievedByConsumer = stringStorage.poll(); // retrieve and remove the head of the list
                 System.out.printf("%s: Line Readed: stringStorage size -> %d\n",
                         Thread.currentThread().getName(),
@@ -73,13 +73,16 @@ public class Buffer {
         return okToProducer ||
                 stringStorage.size()>0;
     }
-
+    // for logging info
     public synchronized boolean getOkToProducer(){
         return okToProducer;
     }
+    // for logging info
     public synchronized int getStringStorageSize(){
         return stringStorage.size();
     }
+
+
 
 
 

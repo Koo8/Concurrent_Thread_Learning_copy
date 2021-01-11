@@ -1,43 +1,32 @@
 package FileMockPackageFromCuncurrentCookbook;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class Consumer implements Runnable{
     private Buffer buffer;
-    private String filePath;
-    private File file;
-    private StringBuilder sb;
-    private int counter;
-    public Consumer (Buffer buffer, String filePath) {
+    //private StringBuilder sb;
+    // this has to be the local variable of run() to capture all the readings from all threads
+    // private String lineTotal= null;
+    public Consumer (Buffer buffer) {
         this.buffer = buffer;
-        // this filePath will only correspond to main thread if not "dynamic" part added in the run()
-        this.filePath = filePath;
-        sb = new StringBuilder();
-        counter=0;
+        //  sb = new StringBuilder();
     }
     @Override
     public void run() {
-        counter++;
-        this.filePath += (Thread.currentThread().getName() + ".txt"); // create a dynamic file path that match each thread name
-        System.out.println(Thread.currentThread().getName() +" ---> okToProducer is " +buffer.getOkToProducer());
-        System.out.println(Thread.currentThread().getName() + " ---->StringStorage size is "+ buffer.getStringStorageSize());
+        System.out.println("@@@" + Thread.currentThread().getName() + " in run() ");
+        String lineTotal = null;// highlight: must be local variable, for capturing all readings by all threads, it will loss all content beyond the run block
+        StringBuilder sb = new StringBuilder();
         // the condition of okToProducer = true keep the consumer threads stay inside this while block till the producer shut it down by turning the switch off
-        while (/*buffer.hasPendingLines()*/ buffer.getStringStorageSize()>0 || buffer.getOkToProducer()) { // two situations apply: 1 is when producer is within run(), 2 is when okToProducer is false, but buffer.sizse >0
-            String line = buffer.get();
-            sb.append(line + "\n");
+        while ( buffer.getStringStorageSize()>0 || buffer.getOkToProducer()) { // two situations apply: 1 is when producer is within run(), 2 is when okToProducer is false, but buffer.sizse >0
+            lineTotal = buffer.get();
+            // System.out.println(" &&&&& new Line added "+ lineTotal);
+            sb.append(lineTotal + "\n");
         }
-        processDoc();
+        System.out.println("#### \n" + sb);
+        // processDoc(lineTotal);
     }
-    public void processDoc() {
-        System.out.println("******Counter of " + Thread.currentThread().getName() + " is " + counter);
-        file = new File(filePath);
-       // System.out.println(" in processDoc" + filePath);
-        try(FileWriter fileWriter = new FileWriter(file)){
-           fileWriter.write(sb.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void processDoc(String line) {
+        // System.out.println("******Counter of " + Thread.currentThread().getName() + " is " + counter);
+//        file = new File(filePath);
+        // System.out.println(" in processDoc" + filePath);
+        System.out.println("%%%------\n" +line );
     }
 }
