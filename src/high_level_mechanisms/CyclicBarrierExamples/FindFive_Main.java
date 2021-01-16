@@ -6,6 +6,8 @@ import java.util.concurrent.CyclicBarrier;
 
 /**
  * This copies MatrixMock program
+ * cyclicBarrier is similar to countDownLatch, both needs to wait for all threads to be finished before proceeding
+ * to next step, however, cyclicBarrier has reset() that can restart the whole process or define a recovery route
  */
 public class FindFive_Main {
     static final int row = 100;
@@ -116,8 +118,14 @@ class SearchTask implements Runnable {
         try {
             barrier.await(); // wait for all subTasks to be done.
         } catch (InterruptedException e) {
+            // highlight: if one thread is interrupted, other threads will throw brokenBarrierExceptions
+            System.out.println(Thread.currentThread().getName() + " is interrupted");
             e.printStackTrace();
-        } catch (BrokenBarrierException e) {
+        }  // highlight: when reset() is used, this exception will be thrown.
+        catch (BrokenBarrierException e) {
+            System.out.println(Thread.currentThread().getName() + " is broken" + barrier.isBroken());
+            // recovering process
+            // or restarting the process
             e.printStackTrace();
         }
     }
