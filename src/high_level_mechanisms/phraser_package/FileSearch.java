@@ -26,6 +26,7 @@ public class FileSearch implements Runnable {
         this.initPath = initPath;
         this.end = end;
         this.phaser = phaser;
+       // this.phaser.register();
         this.results = new ArrayList<String>();
     }
 
@@ -36,10 +37,12 @@ public class FileSearch implements Runnable {
         System.out.printf("%s: Starting.\n", Thread.currentThread().getName());
         File file = new File (initPath);
         // check file feature, add file to result list
+
         if (file.isDirectory ()) {
             directoryProcess (file);
         }
         // the following code will implement checkResults
+        // highlight: use boolean condition to start calling a method, instead of calling the method directly
         if (checkResults ()) { // into 2nd phase
             return;
         }
@@ -125,8 +128,9 @@ public class FileSearch implements Runnable {
     }
 
     public static void main (String [] args) throws Exception {
-        Phaser phaser = new Phaser (3);   // the parties number of 3 corresponding with arriveAndAwaitAdvance() to serve as register() with the phaser
-        FileSearch system = new FileSearch ("C:\\Windows", "log", phaser);
+        //Creates a new phaser with the given number of registered unarrived parties
+        Phaser phaser = new Phaser (3);   // no more register() is needed.
+        FileSearch system = new FileSearch ("C:\\drivers", "log", phaser);
         FileSearch apps = new FileSearch ("C:\\Program Files", "log", phaser);
         FileSearch documents = new FileSearch ("C:\\ProgramData", "log", phaser);
 
