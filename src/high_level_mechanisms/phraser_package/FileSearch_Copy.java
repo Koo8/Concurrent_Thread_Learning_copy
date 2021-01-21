@@ -61,6 +61,8 @@ class SearchingFile implements Runnable{
 
     @Override
     public void run() {
+        // Calling this method at the beginning of the run() method ensures that none of the FileSearch
+        //threads begin their job until all the threads are created.
         phaser.arriveAndAwaitAdvance(); // put all threads at the same start
        // System.out.println(Thread.currentThread().getName() + " : into phase "+ phaser.getPhase());
         File file = new File(filePath);
@@ -130,14 +132,14 @@ class SearchingFile implements Runnable{
     // helper method for "toLookThruFile()"
     private void processFile(File file) {
        // System.out.println("In processFile... in "+ Thread.currentThread().getName());
-       // highLight: remove null situation to avoid exception
-        if(file != null){
+       
+        //if(file != null){
             if(file.getName().endsWith(extension)) {
                // System.out.println("&&&  "+file.getName() + " is ended with the extension");
                 filesFound.add(file.getAbsolutePath());
                 //System.out.println("PROCESSFILE : now there are "+ filesFound.size() + " files founded  by " + Thread.currentThread().getName() );
             }
-        }
+        //}
 
     }
 
@@ -147,8 +149,8 @@ class SearchingFile implements Runnable{
         // highLight: remove null situation to avoid exception
         if(files != null) {
             for (File f : files) {
-                // highLight: remove null situation to avoid exception
-                if (f != null) {
+
+              //  if (f != null) {
                     // System.out.println(f.getName() + " is being looped through in "+ Thread.currentThread().getName() );
                     if (f.isDirectory()) {
                         processDirectory(f);
@@ -157,7 +159,7 @@ class SearchingFile implements Runnable{
                         processFile(f);
                         // System.out.println(Thread.currentThread().getName() + " ==> the file " + f.getName() + " is NOT a directory");
                     }
-                }
+               // }
 
             }
         }
