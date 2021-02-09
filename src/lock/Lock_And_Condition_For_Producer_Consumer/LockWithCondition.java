@@ -1,4 +1,4 @@
-package LOCK_interface_Better_Than_Sync.Lock_And_Condition_For_Producer_Consumer;
+package lock.Lock_And_Condition_For_Producer_Consumer;
 
 import java.util.LinkedList;
 import java.util.Queue;

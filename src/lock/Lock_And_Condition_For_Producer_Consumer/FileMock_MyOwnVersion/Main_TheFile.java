@@ -1,4 +1,4 @@
-package LOCK_interface_Better_Than_Sync.Lock_And_Condition_For_Producer_Consumer.FileMock_MyOwnVersion;
+package lock.Lock_And_Condition_For_Producer_Consumer.FileMock_MyOwnVersion;
 
 /**
  * refer to FileMockPackageFromConcurrentCookbook package

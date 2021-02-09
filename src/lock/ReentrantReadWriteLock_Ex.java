@@ -1,4 +1,4 @@
-package LOCK_interface_Better_Than_Sync;
+package lock;
 
 import java.util.*;
 import java.util.concurrent.locks.ReentrantReadWriteLock;

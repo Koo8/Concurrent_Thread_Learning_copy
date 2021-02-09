@@ -1,4 +1,4 @@
-package LOCK_interface_Better_Than_Sync.Lock_And_Condition_For_Producer_Consumer;
+package lock.Lock_And_Condition_For_Producer_Consumer;
 
 
 import java.util.LinkedList;
@@ -8,6 +8,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * Lock -> reentrantLock, reentrantReadWriteLock(bad), stampedLook(good with optimized read mode)
  * This program
  * 1. create a file like class, generate 100 strings with each has 10 chars in it.
  * 2. create a dataBuffer that can retrieve strings from the file to the buffer
@@ -77,7 +78,7 @@ public class LockWithConditionFromFile {
         // used by producer thread
         private void put(String aLineOfString) {
             /*STEP 1*/
-            lock.lock();
+            lock.lock();// highlight: lock() should be outside of try block
             /*STEP 2*/
             try {
                 /*CHECK condition*/

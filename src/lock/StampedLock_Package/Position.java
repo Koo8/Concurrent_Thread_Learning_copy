@@ -1,4 +1,4 @@
-package StampedLock_Package;
+package lock.StampedLock_Package;
 
 public class Position {
     int x,y;

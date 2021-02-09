@@ -1,0 +1,3 @@
+Java Generics were introduced in JDK 5.0 with the aim of reducing bugs and adding an extra layer of abstraction over types.
+
+This article is a quick intro to Generics in Java, the goal behind them and how they can be used to improve the quality of our code.
